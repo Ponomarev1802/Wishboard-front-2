@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import PrimarySearchAppBar from "./components/header"
+import { connect } from "react-redux"
+
+
+import Auth from "./components/forms/auth"
+import Main from "./pages/main"
+import { userRequest } from "./actions/userActions"
+
 
 class App extends Component {
+
+    componentDidMount () {
+        const {userRequest} = this.props;
+        userRequest();
+    }
+
+
   render() {
+    const { app } = this.props;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <PrimarySearchAppBar></PrimarySearchAppBar>
+          {app.init?"wait":app.auth?<Main/>:<Auth/>}
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+    userRequest: data => dispatch(userRequest(data))
+});
+
+const mapStateToProps = store => ({
+    app: store.app
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

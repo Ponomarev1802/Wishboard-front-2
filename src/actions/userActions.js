@@ -7,24 +7,19 @@ export const
 ;
 
 
-
-
-
-
-export const userRequest = (id) =>{
+export const userRequest = (id) => {
     return dispatch => {
         dispatch({
             type: GET_USER_REQUEST
         });
-        fetch('/user')
+        fetch('/profile/self')
             .then(res => res.json())
             .then(res => dispatch({type: GET_USER_SUCCESS, payload: res}))
             .catch(err => console.log(err))
-
     };
 };
 
-export const userLogout = () =>{
+export const userLogout = () => {
     return dispatch => {
         dispatch({
             type: LOGOUT_USER_REQUEST

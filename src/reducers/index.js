@@ -7,7 +7,7 @@ import {wishReducer} from "./wishReducer";
 const initialState = {};
 
 export const rootReducer = combineReducers({
-	initialState,
+    initialState,
     user: userReducer,
     wishes: wishReducer,
     app: appReducer,

@@ -61,18 +61,18 @@ class UserCard extends React.Component {
               {user.nickname}
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
-            {user.surename} {user.name}
+            {user.surname} {user.first_name}
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
-              {user.birth_date}
+              {user.birthday}
           </Typography>
         </CardContent>
         <div className={classes.controls}>
           <Button aria-label="Previous">
-            <Follows/>  {user.follows}
+            <Follows/>  {user.follows_count}
           </Button>
           <Button aria-label="Play/pause">
-            <Follows/> {user.followers}
+            <Follows/> {user.followers_count}
           </Button>
           <Button aria-label="Написать сообщение">
             <Message/>

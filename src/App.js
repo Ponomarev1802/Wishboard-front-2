@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
           <PrimarySearchAppBar></PrimarySearchAppBar>
-          {app.init?"wait":app.auth?<Main/>:<Auth/>}
+          {app.auth?<Main/>:<Auth/>}
       </div>
     );
   }
